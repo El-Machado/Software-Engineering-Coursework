@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://bq3huk364skd3"]
+
+[ext_resource type="Script" uid="uid://bmmommuxrx4pf" path="res://MainGame.cs" id="1_ws5ob"]
+[ext_resource type="Script" uid="uid://b0w6x6fd1sy0i" path="res://MainTextManager.cs" id="2_bqqt8"]
+[ext_resource type="Script" uid="uid://btp5vgc2f6ayx" path="res://AgeButton.cs" id="3_8qpgq"]
+
+[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_fg4ve"]
+
+[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_nyqwv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fg4ve"]
+font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62e2m"]
+bg_color = Color(0.9882353, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4bf"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+corner_detail = 16
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtu10"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 999
+corner_radius_top_right = 999
+corner_radius_bottom_right = 999
+corner_radius_bottom_left = 999
+corner_detail = 16
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[node name="Main Game" type="Control" unique_id=1015412121]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ws5ob")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=723157827]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("DrawableTexture2D_fg4ve")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=273367335]
+self_modulate = Color(1, 0, 0, 1)
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1920.0
+offset_bottom = -1820.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("DrawableTexture2D_nyqwv")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="AgeLabel" type="Label" parent="TextureRect" unique_id=773435982]
+z_index = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_top = 10.0
+offset_right = 66.0
+offset_bottom = 79.0
+grow_horizontal = 2
+text = "Age 1"
+label_settings = SubResource("LabelSettings_fg4ve")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=745987631]
+self_modulate = Color(1, 0, 0, 1)
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("DrawableTexture2D_nyqwv")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_group_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect" unique_id=1492108676]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 100.0
+offset_right = -1.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainTextManager" type="BoxContainer" parent="TextureRect/ScrollContainer" unique_id=1594050687 node_paths=PackedStringArray("MainGame")]
+layout_mode = 2
+mouse_filter = 2
+vertical = true
+script = ExtResource("2_bqqt8")
+MainGame = NodePath("../../..")
+
+[node name="AgeButton" type="Button" parent="." unique_id=1783757445 node_paths=PackedStringArray("label", "MainTextManager")]
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -221.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_62e2m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ee4bf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qtu10")
+text = "Age"
+script = ExtResource("3_8qpgq")
+label = NodePath("../TextureRect/AgeLabel")
+MainTextManager = NodePath("../TextureRect/ScrollContainer/MainTextManager")

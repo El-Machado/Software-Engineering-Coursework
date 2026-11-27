@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://crev2inf1u6xe"]
+
+[ext_resource type="Script" uid="uid://d2q0xf315h3gq" path="res://StartGameButton.cs" id="1_06t4h"]
+[ext_resource type="PackedScene" uid="uid://bq3huk364skd3" path="res://MainGame.tscn" id="2_7vrkn"]
+[ext_resource type="Script" uid="uid://cd2gxvkrsnn56" path="res://NameInputDialogue.cs" id="3_fu7sn"]
+
+[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_7vrkn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg4ve"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Main Menu" type="Control" unique_id=1934263062]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=544554184]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("DrawableTexture2D_7vrkn")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1150381343]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -342.5
+offset_top = 200.0
+offset_right = 342.5
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Untitled game"
+
+[node name="StartGameButton" type="Button" parent="TextureRect" unique_id=1339383251 node_paths=PackedStringArray("NameDialog", "NameInput")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -48.0
+offset_right = 191.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_fg4ve")
+text = "Start Game"
+script = ExtResource("1_06t4h")
+NameDialog = NodePath("../NameInputDialogue")
+NameInput = NodePath("../NameInputDialogue/LineEdit")
+GameScene = ExtResource("2_7vrkn")
+
+[node name="NameInputDialogue" type="ConfirmationDialog" parent="TextureRect" unique_id=1811507491]
+title = "Please Enter Name"
+size = Vector2i(400, 300)
+content_scale_factor = 2.0
+script = ExtResource("3_fu7sn")
+
+[node name="LineEdit" type="LineEdit" parent="TextureRect/NameInputDialogue" unique_id=245560280]
+offset_right = 68.5
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Your Name"
